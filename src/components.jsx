@@ -61,12 +61,12 @@ function PersonalInformation({onSubmit,data}){
 function Education({onSubmit,data}){
     const [schoolName,setSchoolName] = useState('')
     const [course,setCourse] = useState('')
-    const [startDate,setStartDate] = useState('')
-    const [endDate,setEndDate] = useState('')
+    const [startDateEducation,setStartDate] = useState('')
+    const [endDateEducation,setEndDate] = useState('')
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        onSubmit({...data,schoolName,course,startDate,endDate})
+        onSubmit({...data,schoolName,course,startDateEducation,endDateEducation})
     }
 
     return(
@@ -79,10 +79,10 @@ function Education({onSubmit,data}){
                 <Input type={'text'} name={'course'} setInput={setCourse} value={course}>
                     Course Studied
                 </Input>
-                <Input type={'date'} name={'start-date'} setInput={setStartDate} value={startDate}>
+                <Input type={'date'} name={'start-date-education'} setInput={setStartDate} value={startDateEducation}>
                     Start Date
                 </Input>
-                <Input type={'date'} name={'end-date'} setInput={setEndDate} value={endDate}>
+                <Input type={'date'} name={'end-date-education'} setInput={setEndDate} value={endDateEducation}>
                     End Date
                 </Input>
                 <button onClick={handleSubmit}>submit</button>
@@ -95,8 +95,39 @@ function Education({onSubmit,data}){
 
 }
 
-function WorkExperience({onSubmit}){
+function WorkExperience({onSubmit,data}){
+    const [companyName,setCompanyName] = useState('')
+    const [role,setRole] = useState('')
+    const [startDateWork,setStartDate] = useState('')
+    const [endDateWork,setEndDate] = useState('')
 
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        onSubmit({...data,companyName,role,startDateWork,endDateWork})
+    }
+
+    return(
+        <div className="education">
+            <h1>Work Experience</h1>
+            <form action="#">
+                <Input type={'text'} name={'company-name'} setInput={setCompanyName} value={companyName}>
+                    Company Name
+                </Input>
+                <Input type={'text'} name={'role'} setInput={setRole} value={role}>
+                    Role
+                </Input>
+                <Input type={'date'} name={'start-date-work'} setInput={setStartDate} value={startDateWork}>
+                    Start Date
+                </Input>
+                <Input type={'date'} name={'end-date-work'} setInput={setEndDate} value={endDateWork}>
+                    End Date
+                </Input>
+                <button onClick={handleSubmit}>submit</button>
+            </form>
+
+            
+        </div>
+    )
 }
 
 function Input({type,name,children,setInput,value}){
