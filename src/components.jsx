@@ -25,8 +25,11 @@ function Data({onSubmit,data}){
 
     }
 
-    const handleAddForWork = (x)=>{
-        let list = data.workList
+    const [workInputMode,setWorkInputMode] = useState(false)
+    const [workDataId,setWorkDataId] = useState(0)
+    const handleAddForWork = (id)=>{
+        setWorkInputMode(true)
+        setWorkDataId(id)
     }
 
     return(
@@ -54,12 +57,21 @@ function Data({onSubmit,data}){
             </div>
             <div className="work-container">
                 <h1>Work Experience</h1>
-                {data.workList.map((e)=>{
+                {
+                !workInputMode?
+                <>
+                {data.workList.map((w)=>{
                     return (
-                        <WorkExperience onSubmit={onSubmit} data={data} key={e}></WorkExperience>
+                        <button className="work-button" key={w} onClick={()=>handleAddForWork(w)}>
+                            {w}
+                        </button>
                     )
                 })}
-                <button onClick={handleAddForWork}>add</button>
+                <button onClick={()=>handleAddForWork(0)}>add</button>
+                </>
+                : <WorkExperience onSubmit={onSubmit} data={data} toggleInputMode={setWorkInputMode} id={workDataId} ></WorkExperience>
+
+                }
             </div>
         </div>
     )
@@ -148,15 +160,28 @@ function Education({onSubmit,data,toggleInputMode,id}){
 
 }
 
-function WorkExperience({onSubmit,data}){
-    const [companyName,setCompanyName] = useState('')
-    const [role,setRole] = useState('')
-    const [startDateWork,setStartDate] = useState('')
-    const [endDateWork,setEndDate] = useState('')
+function WorkExperience({onSubmit,data,toggleInputMode,id}){
+    const [companyName,setCompanyName] = useState(id?data[id].companyName:'')
+    const [role,setRole] = useState(id?data[id].role:'')
+    const [startDateWork,setStartDate] = useState(id?data[id].startDateWork:'')
+    const [endDateWork,setEndDate] = useState(id?data[id].endDateWork:'')
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        onSubmit({...data,companyName,role,startDateWork,endDateWork})
+        let list = data.workList
+        toggleInputMode(false)
+        let dataId =id?id:`W-${getLastNumber(list)+1}`
+        let workList = id?[...list]:[...list,dataId]
+        onSubmit({
+            ...data,
+            workList,
+            [dataId]:{
+                companyName,
+                role,
+                startDateWork,
+                endDateWork
+            }
+        })
     }
 
     return(
