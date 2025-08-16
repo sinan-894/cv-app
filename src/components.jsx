@@ -1,9 +1,12 @@
 import { useState } from "react";
-
+import { getLastNumber } from "./functions";
 
 
 export default  function App(){
-    const [data,setData] = useState({})
+    const [data,setData] = useState({
+        educationList:['E-1'],
+        workList:['W-1']
+    })
     return(
         <>
         <Data onSubmit={setData} data={data}></Data>
@@ -14,11 +17,38 @@ export default  function App(){
 
 function Data({onSubmit,data}){
     console.log(data)
+    const handleAddForEducationOrWork = (x)=>{
+        if(x){
+            let list = data.educationList
+            onSubmit({...data,educationList:[...list,`E-${getLastNumber(list)+1}`]})
+        }
+        else{
+            let list = data.workList
+            onSubmit({...data,workList:[...list,`W-${getLastNumber(list)+1}`]})
+        }
+    }
     return(
         <div className="main-input-div">
+            <h1>Personal Information</h1>
             <PersonalInformation onSubmit={onSubmit} data={data}></PersonalInformation>
-            <Education onSubmit={onSubmit} data={data}></Education>
-            <WorkExperience onSubmit={onSubmit} data={data}></WorkExperience>
+            <div className="education-container">
+                <h1>Education</h1>
+                {data.educationList.map((e)=>{
+                    return (
+                        <Education onSubmit={onSubmit} data={data} key={e}></Education>
+                    )
+                })}
+                <button onClick={()=>handleAddForEducationOrWork(true)}>add</button>
+            </div>
+            <div className="work-container">
+                <h1>Work Experience</h1>
+                {data.workList.map((e)=>{
+                    return (
+                        <WorkExperience onSubmit={onSubmit} data={data} key={e}></WorkExperience>
+                    )
+                })}
+                <button onClick={()=>handleAddForEducationOrWork(false)}>add</button>
+            </div>
         </div>
     )
 }
@@ -37,7 +67,6 @@ function PersonalInformation({onSubmit,data}){
 
     return(
         <div className="personal-information">
-            <h1>Personal Information</h1>
             <form action="#">
                 <Input type={'text'} name={'full-name'} value={fullName} setInput={setFullName}>
                     Full Name
@@ -71,7 +100,6 @@ function Education({onSubmit,data}){
 
     return(
         <div className="education">
-            <h1>Education</h1>
             <form action="#">
                 <Input type={'text'} name={'school-name'} setInput={setSchoolName} value={schoolName}>
                     School Name
@@ -108,7 +136,6 @@ function WorkExperience({onSubmit,data}){
 
     return(
         <div className="education">
-            <h1>Work Experience</h1>
             <form action="#">
                 <Input type={'text'} name={'company-name'} setInput={setCompanyName} value={companyName}>
                     Company Name
@@ -124,6 +151,8 @@ function WorkExperience({onSubmit,data}){
                 </Input>
                 <button onClick={handleSubmit}>submit</button>
             </form>
+
+
 
             
         </div>
