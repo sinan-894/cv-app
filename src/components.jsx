@@ -4,8 +4,8 @@ import { getLastNumber } from "./functions";
 
 export default  function App(){
     const [data,setData] = useState({
-        educationList:['E-1'],
-        workList:['W-1']
+        educationList:[],
+        workList:[]
     })
     return(
         <>
@@ -17,28 +17,40 @@ export default  function App(){
 
 function Data({onSubmit,data}){
     console.log(data)
-    const handleAddForEducationOrWork = (x)=>{
-        if(x){
-            let list = data.educationList
-            onSubmit({...data,educationList:[...list,`E-${getLastNumber(list)+1}`]})
-        }
-        else{
-            let list = data.workList
-            onSubmit({...data,workList:[...list,`W-${getLastNumber(list)+1}`]})
-        }
+    const [educationInputMode,setEducationInputMode] =  useState(false)
+    const [educationDataId,setEducationDataId] = useState(0)
+    const handleAddForEducation = (id)=>{
+        setEducationInputMode(true)
+        setEducationDataId(id)
+
     }
+
+    const handleAddForWork = (x)=>{
+        let list = data.workList
+    }
+
     return(
         <div className="main-input-div">
             <h1>Personal Information</h1>
             <PersonalInformation onSubmit={onSubmit} data={data}></PersonalInformation>
             <div className="education-container">
                 <h1>Education</h1>
+                {
+                !educationInputMode?
+                <>
                 {data.educationList.map((e)=>{
                     return (
-                        <Education onSubmit={onSubmit} data={data} key={e}></Education>
+                        <button className="eduction-button" key={e} onClick={()=>handleAddForEducation(e)}>
+                            {e}
+                        </button>
                     )
                 })}
-                <button onClick={()=>handleAddForEducationOrWork(true)}>add</button>
+                <button onClick={()=>handleAddForEducation(0)}>add</button>
+                </>
+                : <Education onSubmit={onSubmit} data={data} toggleInputMode={setEducationInputMode} id={educationDataId} ></Education>
+
+                }
+                
             </div>
             <div className="work-container">
                 <h1>Work Experience</h1>
@@ -47,7 +59,7 @@ function Data({onSubmit,data}){
                         <WorkExperience onSubmit={onSubmit} data={data} key={e}></WorkExperience>
                     )
                 })}
-                <button onClick={()=>handleAddForEducationOrWork(false)}>add</button>
+                <button onClick={handleAddForWork}>add</button>
             </div>
         </div>
     )
@@ -87,15 +99,28 @@ function PersonalInformation({onSubmit,data}){
     )
 }
 
-function Education({onSubmit,data}){
-    const [schoolName,setSchoolName] = useState('')
-    const [course,setCourse] = useState('')
-    const [startDateEducation,setStartDate] = useState('')
-    const [endDateEducation,setEndDate] = useState('')
+function Education({onSubmit,data,toggleInputMode,id}){
+    const [schoolName,setSchoolName] = useState(id?data[id].schoolName:'')
+    const [course,setCourse] = useState(id?data[id].course:'')
+    const [startDateEducation,setStartDate] = useState(id?data[id].startDateEducation:'')
+    const [endDateEducation,setEndDate] = useState(id?data[id].endDateEducation:'')
 
     const handleSubmit = (e)=>{
         e.preventDefault()
-        onSubmit({...data,schoolName,course,startDateEducation,endDateEducation})
+        let list = data.educationList
+        toggleInputMode(false)
+        let dataId =id?id:`E-${getLastNumber(list)+1}`
+        let educationList = id?[...list]:[...list,dataId]
+        onSubmit({
+            ...data,
+            educationList,
+            [dataId]:{
+                schoolName,
+                course,
+                startDateEducation,
+                endDateEducation
+            }
+        })
     }
 
     return(
@@ -153,8 +178,6 @@ function WorkExperience({onSubmit,data}){
             </form>
 
 
-
-            
         </div>
     )
 }
