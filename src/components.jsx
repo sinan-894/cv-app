@@ -25,9 +25,9 @@ function Data({onSubmit,data,genrate}){
     const [email,setEmail] = useState("")
     const [contact,setContact] = useState("")
     const [address,setAddress] = useState("")
-    const [workInputMode,setWorkInputMode] = useState(false)
+    const [workInputMode,setWorkInputMode] = useState(true)
     const [workDataId,setWorkDataId] = useState(0)
-    const [educationInputMode,setEducationInputMode] =  useState(false)
+    const [educationInputMode,setEducationInputMode] =  useState(true)
     const [educationDataId,setEducationDataId] = useState(0)
     
     const handleGenrate = ()=>{
@@ -144,9 +144,6 @@ function Data({onSubmit,data,genrate}){
     )
 }
 
-
-
-
 function Education({onSubmit,data,toggleInputMode,id}){
     const [schoolName,setSchoolName] = useState(id?data[id].schoolName:'')
     const [course,setCourse] = useState(id?data[id].course:'')
@@ -187,6 +184,8 @@ function Education({onSubmit,data,toggleInputMode,id}){
                     End Date
                 </Input>
                 <button onClick={handleSubmit}>submit</button>
+                {(data.educationList.length>0) && 
+                <button onClick={()=>toggleInputMode(false)}>cancel</button>}
             </form>
 
             
@@ -236,6 +235,8 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
                     End Date
                 </Input>
                 <button onClick={handleSubmit}>submit</button>
+                {(data.workList.length>0) && 
+                <button onClick={()=>toggleInputMode(false)}>cancel</button>}
             </form>
 
 
