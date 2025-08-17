@@ -7,15 +7,18 @@ export default  function App(){
         educationList:[],
         workList:[]
     })
+
+    const [diplayResume,setDisplayResume] = useState(false)
+    if(!diplayResume)
     return(
-        <>
-        <Data onSubmit={setData} data={data}></Data>
+        <Data onSubmit={setData} data={data} genrate={setDisplayResume}></Data>
+    )
+    else return(
         <Resume data={data}></Resume>
-        </>
     )
 }
 
-function Data({onSubmit,data}){
+function Data({onSubmit,data,genrate}){
     console.log(data)
     const [educationInputMode,setEducationInputMode] =  useState(false)
     const [educationDataId,setEducationDataId] = useState(0)
@@ -101,6 +104,7 @@ function Data({onSubmit,data}){
 
                 }
             </div>
+            <button className="genrate-button" onClick={()=>genrate(true)}>Genrate CV</button>
         </div>
     )
 }
@@ -248,5 +252,12 @@ function Input({type,name,children,setInput,value}){
 }
 
 function Resume({data}){
-
+    return(
+        <ul>
+            <li>full name {data.fullName}</li>
+            <li>email {data.email}</li>
+            <li>contact {data.contact}</li>
+            <li>address {data.address}</li>
+        </ul>
+    )
 }
