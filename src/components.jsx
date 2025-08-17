@@ -32,6 +32,20 @@ function Data({onSubmit,data}){
         setWorkDataId(id)
     }
 
+    const deletEducation = (educationToDelete)=>{
+        onSubmit({
+            ...data,
+            educationList:data.educationList.filter(edu=>edu!=educationToDelete)
+        })
+    }
+
+    const deleteWork = (workToDelete)=>{
+        onSubmit({
+            ...data,
+            workList:data.workList.filter(work=>work!=workToDelete)
+        })
+    }
+
     return(
         <div className="main-input-div">
             <h1>Personal Information</h1>
@@ -43,9 +57,15 @@ function Data({onSubmit,data}){
                 <>
                 {data.educationList.map((e)=>{
                     return (
-                        <button className="eduction-button" key={e} onClick={()=>handleAddForEducation(e)}>
-                            {e}
-                        </button>
+                        <div className="education-list">
+                            <button className="eduction-button" key={e} onClick={()=>handleAddForEducation(e)}>
+                                {e}
+                            </button>
+                            <button className="delete-work-education delete-education"
+                            onClick={()=>deletEducation(e)}> 
+                            delete
+                            </button>
+                        </div>
                     )
                 })}
                 <button onClick={()=>handleAddForEducation(0)}>add</button>
@@ -62,9 +82,17 @@ function Data({onSubmit,data}){
                 <>
                 {data.workList.map((w)=>{
                     return (
-                        <button className="work-button" key={w} onClick={()=>handleAddForWork(w)}>
-                            {w}
-                        </button>
+                        <div className="work-list">
+                            <button className="work-button" key={w} onClick={()=>handleAddForWork(w)}>
+                                {w}
+                            </button>
+                            <button 
+                            className="delete-work-education delete-work" 
+                            onClick={()=>deleteWork(w)}>
+                                delete
+                            </button>
+                        </div>
+
                     )
                 })}
                 <button onClick={()=>handleAddForWork(0)}>add</button>
