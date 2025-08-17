@@ -20,16 +20,35 @@ export default  function App(){
 
 function Data({onSubmit,data,genrate}){
     console.log(data)
+
+    const [fullName,setFullName] = useState("")
+    const [email,setEmail] = useState("")
+    const [contact,setContact] = useState("")
+    const [address,setAddress] = useState("")
+    const [workInputMode,setWorkInputMode] = useState(false)
+    const [workDataId,setWorkDataId] = useState(0)
     const [educationInputMode,setEducationInputMode] =  useState(false)
     const [educationDataId,setEducationDataId] = useState(0)
+    
+    const handleGenrate = ()=>{
+        onSubmit({
+            ...data,
+            fullName,
+            email,
+            contact,
+            address
+        })
+        genrate(true)
+
+    }
+
     const handleAddForEducation = (id)=>{
         setEducationInputMode(true)
         setEducationDataId(id)
 
     }
 
-    const [workInputMode,setWorkInputMode] = useState(false)
-    const [workDataId,setWorkDataId] = useState(0)
+    
     const handleAddForWork = (id)=>{
         setWorkInputMode(true)
         setWorkDataId(id)
@@ -52,7 +71,23 @@ function Data({onSubmit,data,genrate}){
     return(
         <div className="main-input-div">
             <h1>Personal Information</h1>
-            <PersonalInformation onSubmit={onSubmit} data={data}></PersonalInformation>
+            <div className="personal-information">
+                <form action="#">
+                    <Input type={'text'} name={'full-name'} value={fullName} setInput={setFullName}>
+                        Full Name
+                    </Input>
+                    <Input type={'text'} name={'email'} value={email} setInput={setEmail}>
+                        email
+                    </Input>
+                    <Input type={'text'} name={'contact'} value={contact} setInput={setContact}>
+                        contact
+                    </Input>
+                    <Input type={'text'} name={'address'} value={address} setInput={setAddress}>    
+                        Address
+                    </Input>
+                </form>
+            
+            </div>
             <div className="education-container">
                 <h1>Education</h1>
                 {
@@ -104,44 +139,13 @@ function Data({onSubmit,data,genrate}){
 
                 }
             </div>
-            <button className="genrate-button" onClick={()=>genrate(true)}>Genrate CV</button>
+            <button className="genrate-button" onClick={handleGenrate}>Genrate CV</button>
         </div>
     )
 }
 
 
-function PersonalInformation({onSubmit,data}){
-    const [fullName,setFullName] = useState("")
-    const [email,setEmail] = useState("")
-    const [contact,setContact] = useState("")
-    const [address,setAddress] = useState("")
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-        onSubmit({...data,fullName,email,contact,address})
 
-    }
-
-    return(
-        <div className="personal-information">
-            <form action="#">
-                <Input type={'text'} name={'full-name'} value={fullName} setInput={setFullName}>
-                    Full Name
-                </Input>
-                <Input type={'text'} name={'email'} value={email} setInput={setEmail}>
-                    email
-                </Input>
-                <Input type={'text'} name={'contact'} value={contact} setInput={setContact}>
-                    contact
-                </Input>
-                <Input type={'text'} name={'address'} value={address} setInput={setAddress}>    
-                    Address
-                </Input>
-                <button onClick={handleSubmit}>submit</button>
-            </form>
-            
-        </div>
-    )
-}
 
 function Education({onSubmit,data,toggleInputMode,id}){
     const [schoolName,setSchoolName] = useState(id?data[id].schoolName:'')
