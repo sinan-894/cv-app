@@ -4,7 +4,7 @@ export  const data = {
     email:'somemail@gmail.com',
     contact:'123-54344-534',
     address:'location,street',
-    discription:'fjsajfkja dsf akldsfksdajf kaj dfkjdsk afa dsfk dasjfasdjf dsaj; f jdaf djafs adjf dakfjkadfj kads fj   faf dafs daf a dfd af fsdjfksdjfkdsjf',
+    discription:'Business Administration student.I consider my self a responsible and orderly person.I am looking foward for my first work experience.',
     educationList:['E-1','E-2'],
     workList:['W-1','W-2'],
     'E-1':{

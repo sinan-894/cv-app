@@ -43,7 +43,34 @@
 .personal-details{
     background-color: var(--side-bg-color);
     margin-left: 10%;
+    color: var(--text-color);
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 5px;
 }
+
+.profile{
+    margin-bottom: 50px;
+}
+
+.profile p{
+    font-size: 1.6em;
+    line-height: 35px;
+    margin-top: 15px;
+}
+
+.contact-details li{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3em;
+    margin-top: 15px;
+}
+
+.contact-details img{
+    width: 30px;
+}
+
 
 /* work and education */
 
