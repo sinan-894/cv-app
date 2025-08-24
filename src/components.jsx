@@ -262,7 +262,10 @@ function Input({type,name,children,setInput,value}){
 function Resume({data}){
     return(
         <div className="resume-main">
-
+            <section className="resume-header">
+                <h1>{data.fullName}</h1>
+                <h3>{data.designation}</h3>
+            </section>
         </div>
     )
 }

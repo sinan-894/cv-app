@@ -1,5 +1,6 @@
 export  const data = {
-    fullName:'Some Name',
+    fullName:'Sebastian Bennett',
+    designation:'Some Developer',
     email:'somemail@gmail.com',
     contact:'123-54344-534',
     address:'location,street',
