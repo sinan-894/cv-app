@@ -267,6 +267,27 @@ function Resume({data}){
                 <h3>{data.designation}</h3>
             </section>
             <section className="personal-details">
+                <div className="profile">
+                    <h2>PROFILE</h2>
+                    <p>{data.discription}</p>
+                </div>
+                <div className="contact-me">
+                    <h2>CONTACT ME</h2>
+                    <ul className="contact-details">
+                        <li>
+                            <img src="src/static/phone-svgrepo-com.svg" alt="" />
+                            {data.contact}
+                        </li>
+                        <li>
+                            <img src="src/static/envelope-mail-svgrepo-com.svg" alt="" />
+                            {data.email}
+                        </li>
+                        <li>
+                            <img src="src/static/location-svgrepo-com.svg" alt="" />
+                            {data.address}
+                        </li>
+                    </ul>
+                </div>
 
             </section>
             <section className="work-education"></section>
