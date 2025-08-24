@@ -266,6 +266,10 @@ function Resume({data}){
                 <h1>{data.fullName}</h1>
                 <h3>{data.designation}</h3>
             </section>
+            <section className="personal-details">
+
+            </section>
+            <section className="work-education"></section>
         </div>
     )
 }
