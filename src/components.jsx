@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { getLastNumber } from "./functions";
+import { data } from "./test-data";
 
 
 export default  function App(){
-    const [data,setData] = useState({
-        educationList:[],
-        workList:[]
-    })
+    // const [data,setData] = useState({
+    //     educationList:[],
+    //     workList:[]
+    // })
 
-    const [diplayResume,setDisplayResume] = useState(false)
-    if(!diplayResume)
+    // const [displayResume,setDisplayResume] = useState(false)
+    const displayResume = true
+    if(!displayResume)
     return(
         <Data onSubmit={setData} data={data} genrate={setDisplayResume}></Data>
     )
