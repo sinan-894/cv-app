@@ -290,7 +290,41 @@ function Resume({data}){
                 </div>
 
             </section>
-            <section className="work-education"></section>
+            <section className="work-education">
+                <div className="education">
+                    <h1>EDUCATION</h1>
+                    {data.educationList.map(e=>(
+                        <div className="education-details">
+                            <p className="school">{data[e].schoolName}</p>
+                            <p className="education-date">
+                                {data[e].startDateEducation}-{data[e].endDateEducation}
+                            </p>
+                            <p className="course">{data[e].course}</p>
+                        </div>
+                    ))}
+                </div>
+                <div className="skills">
+                    <h1>SKILLS</h1>
+                    <ul>
+                        {data.skillList.map(s=>(
+                            <li>{s}</li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="work">
+                    <h1>WORK EXPERIENCE</h1>
+                    {data.workList.map(w=>(
+                        <div className="work-details">
+                            <p className="company-name">{data[w].companyName}</p>
+                            <p className="work-date">
+                                {data[w].startDateWork}-{data[w].endDateWork}
+                            </p>
+                            <p className="role">{data[w].role}</p>
+                        </div>
+                    ))}
+                </div>
+
+            </section>
         </div>
     )
 }
