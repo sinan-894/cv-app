@@ -4,7 +4,7 @@ export  const data = {
     email:'somemail@gmail.com',
     contact:'123-54344-534',
     address:'location,street',
-    discription:'Business Administration student.I consider my self a responsible and orderly person.I am looking foward for my first work experience.',
+    profileSummary:'Business Administration student.I consider my self a responsible and orderly person.I am looking foward for my first work experience.',
     educationList:['E-1','E-2'],
     workList:['W-1','W-2'],
     skillList:['python','react','javascript','gaming','dribbling'],
@@ -25,7 +25,7 @@ export  const data = {
         role:'role1',
         startDateWork:'oct 2022',
         endDateWork:'oct 2024',
-        workDiscription:'Managed GRM Database, including troubleshooting, amintenance, updates and report generation.'
+        jobDiscription:'Managed GRM Database, including troubleshooting, amintenance, updates and report generation.'
 
     },
     'W-2':{
@@ -33,7 +33,7 @@ export  const data = {
         role:'role2',
         startDateWork:'nov 2024',
         endDateWork:'present',
-        workDiscription:'Responsible for gathering, assembling and analyzing information and data from a wide variety of sources'
+        jobDiscription:'Responsible for gathering, assembling and analyzing information and data from a wide variety of sources'
     }
 
 

@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { getLastNumber } from "./functions";
-import { data } from "./test-data";
+// import { data } from "./test-data";
 import './resume-template.css'
 
 
 export default  function App(){
-    // const [data,setData] = useState({
-    //     educationList:[],
-    //     workList:[]
-    // })
+    const [data,setData] = useState({
+        educationList:[],
+        workList:[]
+    })
 
-    // const [displayResume,setDisplayResume] = useState(false)
-    const displayResume = true
+    const [displayResume,setDisplayResume] = useState(false)
+    // const displayResume = true
     if(!displayResume)
     return(
         <Data onSubmit={setData} data={data} genrate={setDisplayResume}></Data>
@@ -304,7 +304,7 @@ function Resume({data}){
             <section className="personal-details">
                 <div className="profile">
                     <h2>PROFILE</h2>
-                    <p>{data.discription}</p>
+                    <p>{data.profileSummary}</p>
                 </div>
                 <div className="contact-me">
                     <h2>CONTACT ME</h2>
@@ -338,14 +338,14 @@ function Resume({data}){
                         </div>
                     ))}
                 </div>
-                <div className="skills">
+                {/* <div className="skills">
                     <h2 className="section-header">SKILLS</h2>
                     <ul>
                         {data.skillList.map(s=>(
                             <li>{s}</li>
                         ))}
                     </ul>
-                </div>
+                </div> */}
                 <div className="work">
                     <h2 className="section-header">WORK EXPERIENCE</h2>
                     {data.workList.map(w=>(
@@ -356,7 +356,7 @@ function Resume({data}){
                             </p>
                             <p className="role">{data[w].role}</p>
                             <p className="work-discription">
-                                {data[w].workDiscription}
+                                {data[w].jobDiscription}
                             </p>
                         </div>
                     ))}
