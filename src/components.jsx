@@ -292,11 +292,11 @@ function Resume({data}){
             </section>
             <section className="work-education">
                 <div className="education">
-                    <h1>EDUCATION</h1>
+                    <h2 className="section-header">EDUCATION</h2>
                     {data.educationList.map(e=>(
                         <div className="education-details">
                             <p className="school">{data[e].schoolName}</p>
-                            <p className="education-date">
+                            <p className="date">
                                 {data[e].startDateEducation}-{data[e].endDateEducation}
                             </p>
                             <p className="course">{data[e].course}</p>
@@ -304,7 +304,7 @@ function Resume({data}){
                     ))}
                 </div>
                 <div className="skills">
-                    <h1>SKILLS</h1>
+                    <h2 className="section-header">SKILLS</h2>
                     <ul>
                         {data.skillList.map(s=>(
                             <li>{s}</li>
@@ -312,11 +312,11 @@ function Resume({data}){
                     </ul>
                 </div>
                 <div className="work">
-                    <h1>WORK EXPERIENCE</h1>
+                    <h2 className="section-header">WORK EXPERIENCE</h2>
                     {data.workList.map(w=>(
                         <div className="work-details">
                             <p className="company-name">{data[w].companyName}</p>
-                            <p className="work-date">
+                            <p className="date">
                                 {data[w].startDateWork}-{data[w].endDateWork}
                             </p>
                             <p className="role">{data[w].role}</p>

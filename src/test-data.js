@@ -16,7 +16,7 @@ export  const data = {
     },
     'E-2':{
         schoolName:'School Name 2',
-        course:'course1',
+        course:'Business Administration career, in progress.',
         startDateEducation:'sep 2020',
         endDateEducation:'sep 2022'
     },

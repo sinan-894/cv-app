@@ -4,7 +4,9 @@
     margin: 0px;
     padding: 0px;
 }
-
+ul {
+    list-style-type: none;
+  }
 /* header */
 .resume-main{
     width:900px;
@@ -73,6 +75,44 @@
 
 
 /* work and education */
+
+.work-education{
+    color: var(--text-color);
+    margin-left: 7%;
+    margin-top: 4%;
+}
+
+.school,.company-name{
+    font-size: 1.4em;
+    font-weight: 500;
+}
+
+.role,.course{
+    font-size: 1.4em;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+
+.date{
+    font-size: 1.0em;
+    font-style: italic;
+}
+
+.skills li{
+    font-size: 1.3em;
+    margin-top: 5px;
+}
+
+.education-details,.work-details{
+    margin-top: 15px;
+    line-height: 25px;
+}
+
+.education,.skills{
+    margin-bottom: 15px;
+}
+
 
 
 
