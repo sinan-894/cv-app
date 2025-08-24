@@ -320,6 +320,9 @@ function Resume({data}){
                                 {data[w].startDateWork}-{data[w].endDateWork}
                             </p>
                             <p className="role">{data[w].role}</p>
+                            <p className="work-discription">
+                                {data[w].workDiscription}
+                            </p>
                         </div>
                     ))}
                 </div>

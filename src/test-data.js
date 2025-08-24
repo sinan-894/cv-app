@@ -25,13 +25,15 @@ export  const data = {
         role:'role1',
         startDateWork:'oct 2022',
         endDateWork:'oct 2024',
+        workDiscription:'Managed GRM Database, including troubleshooting, amintenance, updates and report generation.'
 
     },
     'W-2':{
         companyName:'Company Name 2',
         role:'role2',
         startDateWork:'nov 2024',
-        endDateWork:'present'
+        endDateWork:'present',
+        workDiscription:'Responsible for gathering, assembling and analyzing information and data from a wide variety of sources'
     }
 
 

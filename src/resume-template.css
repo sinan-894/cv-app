@@ -93,6 +93,10 @@ ul {
     font-weight: lighter;
 }
 
+.work-discription{
+    font-size: 1.3em;
+}
+
 
 .date{
     font-size: 1.0em;
@@ -106,12 +110,13 @@ ul {
 
 .education-details,.work-details{
     margin-top: 15px;
-    line-height: 25px;
+    line-height: 30px;
 }
 
 .education,.skills{
     margin-bottom: 15px;
 }
+
 
 
 
