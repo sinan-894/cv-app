@@ -5,7 +5,8 @@ import { getLastNumber } from "./functions";
 export default  function App(){
     const [data,setData] = useState({
         educationList:[],
-        workList:[]
+        workList:[],
+        skillList:[],
     })
 
     const [diplayResume,setDisplayResume] = useState(false)
@@ -31,6 +32,8 @@ function Data({onSubmit,data,genrate}){
     const [workDataId,setWorkDataId] = useState(0)
     const [educationInputMode,setEducationInputMode] =  useState(true)
     const [educationDataId,setEducationDataId] = useState(0)
+    const [skill,setSkill] = useState('')
+    const [isSkillAdd,setIsSkillAdd] = useState(false)
     
     const handleGenrate = ()=>{
         onSubmit({
@@ -52,6 +55,7 @@ function Data({onSubmit,data,genrate}){
 
     }
 
+
     
     const handleAddForWork = (id)=>{
         setWorkInputMode(true)
@@ -69,6 +73,29 @@ function Data({onSubmit,data,genrate}){
         onSubmit({
             ...data,
             workList:data.workList.filter(work=>work!=workToDelete)
+        })
+    }
+
+    const handleAddSkills = ()=>{
+        if(isSkillAdd){
+            setIsSkillAdd(false)
+            onSubmit({
+                ...data,
+                skillList:[...data.skillList,skill]
+            })
+            setSkill("")
+
+        }
+        else{
+            setIsSkillAdd(true)
+
+        }
+    }
+
+    const handleDeleteSkills = (s)=>{
+        onSubmit({
+            ...data,
+            skillList:data.skillList.filter(skill=>(skill!=s))
         })
     }
 
@@ -95,6 +122,22 @@ function Data({onSubmit,data,genrate}){
                 </form>
             
             </div>
+
+            <div className="skill-container">
+                <h1>skills</h1>
+                <div className="skills">
+                    {
+                        data.skillList.map(s=>(
+                            <>
+                            {s}<button onClick={()=>handleDeleteSkills(s)}>delete</button>
+                            </>
+                        ))
+                    }
+                </div>
+                {isSkillAdd && <input type="text" value={skill} onChange={(e)=>setSkill(e.target.value)}/>}
+                <button onClick={handleAddSkills}>add</button>
+            </div>
+
             <div className="education-container">
                 <h1>Education</h1>
                 {
