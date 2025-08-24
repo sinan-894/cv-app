@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { getLastNumber } from "./functions";
 import { data } from "./test-data";
+import './resume-template.css'
 
 
 export default  function App(){
@@ -260,11 +261,8 @@ function Input({type,name,children,setInput,value}){
 
 function Resume({data}){
     return(
-        <ul>
-            <li>full name {data.fullName}</li>
-            <li>email {data.email}</li>
-            <li>contact {data.contact}</li>
-            <li>address {data.address}</li>
-        </ul>
+        <div className="resume-main">
+
+        </div>
     )
 }
