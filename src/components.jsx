@@ -22,6 +22,8 @@ function Data({onSubmit,data,genrate}){
     console.log(data)
 
     const [fullName,setFullName] = useState("")
+    const [designation,setDesignation] = useState("")
+    const [profileSummary,setProfileSummary] = useState('')
     const [email,setEmail] = useState("")
     const [contact,setContact] = useState("")
     const [address,setAddress] = useState("")
@@ -34,6 +36,8 @@ function Data({onSubmit,data,genrate}){
         onSubmit({
             ...data,
             fullName,
+            designation,
+            profileSummary,
             email,
             contact,
             address
@@ -76,6 +80,9 @@ function Data({onSubmit,data,genrate}){
                     <Input type={'text'} name={'full-name'} value={fullName} setInput={setFullName}>
                         Full Name
                     </Input>
+                    <Input type={'text'} name={'designation'} value={designation} setInput={setDesignation}>Designation</Input>
+                    <label>Profile Summary</label>
+                    <textarea name="" id="" cols="30" rows="10" value={profileSummary} onChange={(e)=>setProfileSummary(e.target.value)}></textarea>
                     <Input type={'text'} name={'email'} value={email} setInput={setEmail}>
                         email
                     </Input>
@@ -200,6 +207,7 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
     const [role,setRole] = useState(id?data[id].role:'')
     const [startDateWork,setStartDate] = useState(id?data[id].startDateWork:'')
     const [endDateWork,setEndDate] = useState(id?data[id].endDateWork:'')
+    const [jobDiscription,setJobDiscription] = useState(id?data[id].jobDiscription:'')
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -214,7 +222,8 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
                 companyName,
                 role,
                 startDateWork,
-                endDateWork
+                endDateWork,
+                jobDiscription
             }
         })
     }
@@ -234,6 +243,11 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
                 <Input type={'date'} name={'end-date-work'} setInput={setEndDate} value={endDateWork}>
                     End Date
                 </Input>
+                <label htmlFor="">Job Discription</label>
+                <textarea name="" id="" cols="30" rows="10" value={jobDiscription} 
+                onChange={(e)=>setJobDiscription(e.target.value)}>
+
+                </textarea>
                 <button onClick={handleSubmit}>submit</button>
                 {(data.workList.length>0) && 
                 <button onClick={()=>toggleInputMode(false)}>cancel</button>}
