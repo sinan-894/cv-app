@@ -156,6 +156,15 @@ function Education({onSubmit,data,toggleInputMode,id}){
     const [course,setCourse] = useState(id?data[id].course:'')
     const [startDateEducation,setStartDate] = useState(id?data[id].startDateEducation:'')
     const [endDateEducation,setEndDate] = useState(id?data[id].endDateEducation:'')
+    const [isOnGoing,setIsOnGoing] = useState((endDateEducation=='present')?true:false)
+
+    const handleOnGoing = ()=>{
+        setIsOnGoing(!isOnGoing)
+        if(!isOnGoing){
+            setEndDate('present')
+        }
+    }
+
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -187,9 +196,11 @@ function Education({onSubmit,data,toggleInputMode,id}){
                 <Input type={'date'} name={'start-date-education'} setInput={setStartDate} value={startDateEducation}>
                     Start Date
                 </Input>
-                <Input type={'date'} name={'end-date-education'} setInput={setEndDate} value={endDateEducation}>
+                <label htmlFor="">Is On going</label>
+                <input type="checkbox" checked={isOnGoing} onChange={handleOnGoing}/>
+                {!isOnGoing && <Input type={'date'} name={'end-date-education'} setInput={setEndDate} value={endDateEducation}>
                     End Date
-                </Input>
+                </Input>}
                 <button onClick={handleSubmit}>submit</button>
                 {(data.educationList.length>0) && 
                 <button onClick={()=>toggleInputMode(false)}>cancel</button>}
@@ -207,7 +218,15 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
     const [role,setRole] = useState(id?data[id].role:'')
     const [startDateWork,setStartDate] = useState(id?data[id].startDateWork:'')
     const [endDateWork,setEndDate] = useState(id?data[id].endDateWork:'')
+    const [isOnGoing,setIsOnGoing] = useState((endDateWork=='present')?true:false)
     const [jobDiscription,setJobDiscription] = useState(id?data[id].jobDiscription:'')
+
+    const handleOnGoing = ()=>{
+        setIsOnGoing(!isOnGoing)
+        if(!isOnGoing){
+            setEndDate('present')
+        }
+    }
 
     const handleSubmit = (e)=>{
         e.preventDefault()
@@ -240,9 +259,11 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
                 <Input type={'date'} name={'start-date-work'} setInput={setStartDate} value={startDateWork}>
                     Start Date
                 </Input>
-                <Input type={'date'} name={'end-date-work'} setInput={setEndDate} value={endDateWork}>
+                <label htmlFor="">Is On going</label>
+                <input type="checkbox" checked={isOnGoing} onChange={handleOnGoing}/>
+                {!isOnGoing && <Input type={'date'} name={'end-date-work'} setInput={setEndDate} value={endDateWork}>
                     End Date
-                </Input>
+                </Input>}
                 <label htmlFor="">Job Discription</label>
                 <textarea name="" id="" cols="30" rows="10" value={jobDiscription} 
                 onChange={(e)=>setJobDiscription(e.target.value)}>
