@@ -381,14 +381,14 @@ function Resume({data}){
                         </div>
                     ))}
                 </div>
-                {/* <div className="skills">
+                <div className="skills">
                     <h2 className="section-header">SKILLS</h2>
                     <ul>
                         {data.skillList.map(s=>(
                             <li>{s}</li>
                         ))}
                     </ul>
-                </div> */}
+                </div>
                 <div className="work">
                     <h2 className="section-header">WORK EXPERIENCE</h2>
                     {data.workList.map(w=>(
