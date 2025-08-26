@@ -2,6 +2,7 @@ import { useState } from "react";
 import { getLastNumber } from "./functions";
 // import { data } from "./test-data";
 import './resume-template.css'
+import './style.css'
 
 
 export default  function App(){
@@ -111,8 +112,6 @@ function Data({onSubmit,data,genrate}){
                         Full Name
                     </Input>
                     <Input type={'text'} name={'designation'} value={designation} setInput={setDesignation}>Designation</Input>
-                    <label>Profile Summary</label>
-                    <textarea name="" id="" cols="30" rows="10" value={profileSummary} onChange={(e)=>setProfileSummary(e.target.value)}></textarea>
                     <Input type={'text'} name={'email'} value={email} setInput={setEmail}>
                         email
                     </Input>
@@ -122,6 +121,10 @@ function Data({onSubmit,data,genrate}){
                     <Input type={'text'} name={'address'} value={address} setInput={setAddress}>    
                         Address
                     </Input>
+                    <div className="textarea">
+                        <label>Profile Summary</label>
+                        <textarea name="" id="" cols="30" rows="10" value={profileSummary} onChange={(e)=>setProfileSummary(e.target.value)}></textarea>
+                    </div>
                 </form>
             
             </div>
@@ -310,11 +313,12 @@ function WorkExperience({onSubmit,data,toggleInputMode,id}){
                 {!isOnGoing && <Input type={'date'} name={'end-date-work'} setInput={setEndDate} value={endDateWork}>
                     End Date
                 </Input>}
-                <label htmlFor="">Job Discription</label>
-                <textarea name="" id="" cols="30" rows="10" value={jobDiscription} 
-                onChange={(e)=>setJobDiscription(e.target.value)}>
-
-                </textarea>
+                <div className="textarea">
+                    <label htmlFor="">Job Discription</label>
+                    <textarea name="" id="" cols="30" rows="10" value={jobDiscription}
+                    onChange={(e)=>setJobDiscription(e.target.value)}>
+                    </textarea>
+                </div>
                 <button onClick={handleSubmit}>submit</button>
                 {(data.workList.length>0) && 
                 <button onClick={()=>toggleInputMode(false)}>cancel</button>}
@@ -330,10 +334,10 @@ function Input({type,name,children,setInput,value}){
         setInput(e.target.value)
     }
     return(
-        <>
-        <label htmlFor={name}>{children}</label>
-        <input type={type} name={name} value={value} id={name} onChange={handleChange}/>
-        </>
+        <div className="input">
+            <label htmlFor={name}>{children}</label>
+            <input type={type} name={name} value={value} id={name} onChange={handleChange}/>
+        </div>
     )
 }
 
