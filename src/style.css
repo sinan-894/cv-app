@@ -1,9 +1,26 @@
 /* personal detail form */
 
-.personal-information{
-
+.personal-information form{
+    font-size: 1.5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .textarea label{
     display: block;
 }
+
+.input{
+    font-size: 1em;
+}
+
+.input label{
+
+    display: block;
+}
+
+input{
+    height: 20px;
+    width: 80%;
+}
+
