@@ -26,7 +26,8 @@ export default  function App(){
 function Data({onSubmit,data,genrate}){
     console.log(data)
 
-    const [fullName,setFullName] = useState("")
+    const [firstName,setFirstName] = useState("")
+    const [lastName,setLastName] = useState("")
     const [designation,setDesignation] = useState("")
     const [profileSummary,setProfileSummary] = useState('')
     const [email,setEmail] = useState("")
@@ -42,7 +43,8 @@ function Data({onSubmit,data,genrate}){
     const handleGenrate = ()=>{
         onSubmit({
             ...data,
-            fullName,
+            firstName,
+            lastName,
             designation,
             profileSummary,
             email,
@@ -108,8 +110,11 @@ function Data({onSubmit,data,genrate}){
             <h1>Personal Information</h1>
             <div className="personal-information">
                 <form action="#">
-                    <Input type={'text'} name={'full-name'} value={fullName} setInput={setFullName}>
-                        Full Name
+                    <Input type={'text'} name={'full-name'} value={firstName} setInput={setFirstName}>
+                        First Name
+                    </Input>
+                    <Input type={'text'} name={'full-name'} value={lastName} setInput={setLastName  }>
+                        Last Name
                     </Input>
                     <Input type={'text'} name={'designation'} value={designation} setInput={setDesignation}>Designation</Input>
                     <Input type={'text'} name={'email'} value={email} setInput={setEmail}>

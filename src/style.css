@@ -1,26 +1,49 @@
 /* personal detail form */
 
+.main-input-div{
+    margin-left: 50px;
+}
+
+
 .personal-information form{
     font-size: 1.5em;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin: 20px 0px;
+    
+}
+
+.personal-information form > div{
+    margin-bottom:20px ;
+    
+}
+
+.personal-information form > div > :first-child{
+    margin-bottom:5px ;
+    
 }
 
 .textarea label{
     display: block;
 }
 
+.textarea{
+    grid-column: 1/span 2;
+}
+textarea {
+    width: 80%;
+
+}
 .input{
     font-size: 1em;
 }
 
 .input label{
-
     display: block;
 }
 
 input{
-    height: 20px;
+    height: 20px;   
     width: 80%;
 }
 
