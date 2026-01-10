@@ -4,7 +4,6 @@
     margin-left: 50px;
 }
 
-
 .personal-information form{
     font-size: 1.5em;
     display: grid;
@@ -45,5 +44,55 @@ textarea {
 input{
     height: 20px;   
     width: 80%;
+}
+
+/* education */
+
+
+.education-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.education-container h1{
+    margin-bottom: 20px;
+}
+
+.education-container form {
+    font-size: 1.3em;
+}
+
+.education-container form > div{
+    margin-bottom: 10px;
+}
+
+.education-container form label{
+    margin-bottom: 5px;
+}
+
+
+
+/* work-experience */
+
+
+.work-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.work-container h1{
+    margin-bottom: 20px;
+}
+
+.work-container form {
+    font-size: 1.3em;
+}
+
+.work-container form > div{
+    margin-bottom: 10px;
+}
+
+.work-container form label{
+    margin-bottom: 5px;
 }
 

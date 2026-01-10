@@ -250,11 +250,15 @@ function Education({onSubmit,data,toggleInputMode,id}){
                 <Input type={'date'} name={'start-date-education'} setInput={setStartDate} value={startDateEducation}>
                     Start Date
                 </Input>
-                <label htmlFor="">Is On going</label>
-                <input type="checkbox" checked={isOnGoing} onChange={handleOnGoing}/>
-                {!isOnGoing && <Input type={'date'} name={'end-date-education'} setInput={setEndDate} value={endDateEducation}>
+                <div className="is-ongoing-toggle">
+                    <label className="on-going-label" htmlFor="is-ongoing-toggle">Is On going</label>
+                    <input type="checkbox" checked={isOnGoing} name='is-ongoing-toggle' onChange={handleOnGoing}/>
+                    {!isOnGoing && <Input type={'date'} name={'end-date-education'} setInput={setEndDate} value={endDateEducation}>
                     End Date
-                </Input>}
+                    </Input>}
+
+                </div>
+                
                 <button onClick={handleSubmit}>submit</button>
                 {(data.educationList.length>0) && 
                 <button onClick={()=>toggleInputMode(false)}>cancel</button>}
